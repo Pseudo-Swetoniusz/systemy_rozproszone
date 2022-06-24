@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "sr.grpc.gen";
+option java_outer_classname = "AuthorProto";
+
+package author;
+
+message nameRequest {
+  string name = 1;
+}
+
+message nationalityRequest {
+  string  nation = 1;
+}
+
+enum Nationality {
+    ROMAN = 0;
+    GREEK = 1;
+  }
+
+message Author {
+  string name = 1;
+  Nationality nation = 2;
+  message Work{
+    string title = 1;
+    string genre = 2;
+    enum Language {
+      LATIN = 0;
+      GREEK = 1;
+    }
+    Language lang = 3;
+  }
+  repeated Work works = 3;
+}
+
+message Authors {
+  repeated Author authors = 1;
+}
+
+message Count {
+  int32 num = 1;
+  repeated string names = 2;
+}
+
+service AuthorInfo {
+  rpc getAuthorByName (nameRequest) returns (Author) {}
+  rpc getAuthorsByNationality (nationalityRequest) returns (Authors) {}
+  rpc countByNationality (nationalityRequest) returns (Count) {}
+}

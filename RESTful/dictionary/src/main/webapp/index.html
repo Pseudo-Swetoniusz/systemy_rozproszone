@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<h2>Complete the form</h2>
+<form action="rest/info/answer" method="POST">
+    <label for="word">Chosen word</label>
+    <input name="word"/>
+    <p>Additional options:</p>
+    <div>
+        <input type="radio" id="simMean" name="options" value="simMean" checked>
+        <label for="simMean">words with similar meaning</label>
+    </div>
+    <div>
+        <input type="radio" id="simSpell" name="options" value="simSpell">
+        <label for="simSpell">words with similar spelling</label>
+    </div>
+    <div>
+        <input type="radio" id="simSound" name="options" value="simSound">
+        <label for="simSound">similar sounding words</label>
+    </div>
+    <div>
+        <input type="radio" id="rhyme" name="options" value="rhyme">
+        <label for="rhyme">rhyme with the word</label>
+    </div>
+    <br/>
+    <input type="submit" value="Submit" />
+</form>
+</body>
+</html>
